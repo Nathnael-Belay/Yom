@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20200525125316_InitialCreate")]
+    [Migration("20200525135352_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,17 +40,17 @@ namespace Infrastructure.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductBrandID")
+                    b.Property<int>("ProductBrandId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ProductTypeID")
+                    b.Property<int>("ProductTypeId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductBrandID");
+                    b.HasIndex("ProductBrandId");
 
-                    b.HasIndex("ProductTypeID");
+                    b.HasIndex("ProductTypeId");
 
                     b.ToTable("Products");
                 });
@@ -87,13 +87,13 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.HasOne("Core.Entities.ProductBrand", "ProductBrand")
                         .WithMany()
-                        .HasForeignKey("ProductBrandID")
+                        .HasForeignKey("ProductBrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Entities.ProductType", "ProductType")
                         .WithMany()
-                        .HasForeignKey("ProductTypeID")
+                        .HasForeignKey("ProductTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
